@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Paint</title>
+    <link rel="stylesheet" href="asg1.css">
+  </head>
+
+  <body onload="main()">
+    <canvas id="webgl" width="400" height="400">
+    Please use a browser that supports "canvas"
+    </canvas>
+    <div id= "fpsCounter"></div>
+    <br>
+    <!-- Add below your existing sliders -->
+    <br><br>
+    <button id="toggleWalking">Toggle Walking Animation</button>
+    <br>
+    Head Rotation: 
+    <input type="range" min="-45" max="45" value="0" class="slider" id="headSlide"> 
+    <br>
+    Left Arm Rotation: 
+    <input type="range" min="-150" max="0" value="0" class="slider" id="leftArmSlide"> 
+    <br>
+    Left Hand Rotation: 
+    <input type="range" min="-30" max="30" value="0" class="slider" id="leftHandSlide"> 
+    <br>
+    Right Arm Rotation: 
+    <input type="range" min="0" max="150" value="0" class="slider" id="rightArmSlide"> 
+    <br>
+    Right Hand Rotation: 
+    <input type="range" min="-30" max="30" value="0" class="slider" id="rightHandSlide"> 
+    <br>
+    Left Leg Rotation: 
+    <input type="range" min="-30" max="90" value="0" class="slider" id="leftLegSlide"> 
+    <br>
+    Right Leg Rotation: 
+    <input type="range" min="-30" max="90" value="0" class="slider" id="rightLegSlide"> 
+    <br>
+                            
+    Camera Angle <input type="range" min="0" max="90" value="5" class="slider" id="angleslide">
+    <br>
+    
+
+    <script src="../lib/webgl-utils.js"></script>
+    <script src="../lib/webgl-debug.js"></script>
+    <script src="../lib/cuon-utils.js"></script>
+    <script src="../lib/cuon-matrix.js"></script>
+    <script src="./Point.js"></script>
+    <script src="./Triangle.js"></script>
+    <script src="./Circle.js"></script>
+    <script src="./asg1.js"></script>
+    <script src="./Cube.js"></script>
+    <script src="./Pyramid.js"></script>
+    
+  </body>
+</html>
