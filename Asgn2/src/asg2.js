@@ -83,7 +83,6 @@ function connectVariablesToGLSL() {
 const POINT = 0;
 const TRIANGLE = 1;
 const CIRCLE = 2;
-// Globals related to UI
 let g_selectedColor = [1.0, 1.0, 1.0, 1.0];
 let g_selectedSize = 10;
 let g_selectedType = POINT;
@@ -272,6 +271,11 @@ function easeOutQuad(t) {
   return t * (2 - t);
 }
 
+const COLORS = {
+  LIGHT_GRAY: [0.7, 0.7, 0.7, 1.0],
+  DARK_GRAY: [0.6, 0.6, 0.6, 1.0],
+  BLACK: [0.0, 0.0, 0.0, 1.0],
+};
 
 function renderAllShapes() {
   var startTime = performance.now();
@@ -292,7 +296,7 @@ body.render();
 
 // --- Head ---
 var head = new Cube();
-head.color = [0.7, 0.7, 0.7, 1]; // Light gray
+head.color = COLORS.LIGHT_GRAY;
 head.matrix.set(body.matrix);
 head.matrix.translate(-0.1, 0.8, -0.2);
 head.matrix.translate(0.5,0.1,0.3);
@@ -303,7 +307,7 @@ head.render();
 
 // --- Left Ear ---
 var leftEar = new Cube();
-leftEar.color = [0.6, 0.6, 0.6, 1]; // Slightly darker gray
+leftEar.color = COLORS.DARK_GRAY;
 leftEar.matrix.set(head.matrix);
 leftEar.matrix.translate(-0.2, 0.8, -0.001);
 leftEar.matrix.rotate(g_earAngle, 1,0,0);
@@ -312,7 +316,7 @@ leftEar.render();
 
 // --- Right Ear ---
 var rightEar = new Cube();
-rightEar.color = [0.6, 0.6, 0.6, 1]; // Slightly darker gray
+rightEar.color = COLORS.DARK_GRAY;
 rightEar.matrix.set(head.matrix);
 rightEar.matrix.translate(0.85, 0.8, -0.001);
 rightEar.matrix.rotate(-g_earAngle, 1,0,0);
@@ -321,7 +325,7 @@ rightEar.render();
 
 // --- Nose ---
 var nose = new Pyramid();
-nose.color = [0, 0, 0, 1]; // Black nose
+nose.color = COLORS.BLACK;
 nose.matrix.set(head.matrix);
 nose.matrix.translate(0.51, 0.3, 0);
 nose.matrix.scale(0.05, 0.06, 0.03); // Tall black nose
@@ -332,7 +336,7 @@ nose.render();
 
 // --- Left Arm ---
 var leftArm = new Cube();
-leftArm.color = [0.6, 0.6, 0.6, 1]; // Same gray
+leftArm.color = COLORS.DARK_GRAY;
 leftArm.matrix.set(body.matrix);
 leftArm.matrix.translate(-0.3, 0.05, 0.15);
 leftArm.matrix.translate(0.25, 0.6, 0);
@@ -342,9 +346,7 @@ leftArm.matrix.scale(0.15/0.5, 0.5/0.7, 0.15/0.3);
 leftArm.render();
 
 var leftHand = new Cube();
-leftHand.color = [0.7, 0.7, 0.7, 1]; // Same gray
-
-// Start from leftArm, but undo leftArm's scaling
+leftHand.color = COLORS.LIGHT_GRAY;
 leftHand.matrix.set(leftArm.matrix);
 leftHand.matrix.scale(5/1, 7/5, 3/1);
 leftHand.matrix.translate(0, -0.21, 0);
@@ -355,7 +357,7 @@ leftHand.matrix.scale(1/5, 1.5/7, 1/3);
 leftHand.render();
 // --- Right Arm ---
 var rightArm = new Cube();
-rightArm.color = [0.6, 0.6, 0.6, 1]; // Same gray
+rightArm.color = COLORS.DARK_GRAY;
 rightArm.matrix.set(body.matrix);
 rightArm.matrix.translate(1, 0.05, 0.15);
 rightArm.matrix.translate(0.05, 0.6, 0);
@@ -365,13 +367,9 @@ rightArm.matrix.scale(0.15/0.5, 0.5/0.7, 0.15/0.3);
 rightArm.render();
 
 var rightHand = new Cube();
-rightHand.color = [0.7, 0.7, 0.7, 1]; // Same gray
+rightHand.color = COLORS.LIGHT_GRAY;
 rightHand.matrix.set(rightArm.matrix);
-
-// Undo rightArm scaling: inverse of (0.15/0.5, 0.5/0.7, 0.15/0.3)
 rightHand.matrix.scale(5/1, 7/5, 3/1);
-
-// Apply rotation and translation
 rightHand.matrix.translate(0, -0.21, 0);         // Move to pivot area
 rightHand.matrix.translate(0.1, 0.17, 0);        // Pivot point
 rightHand.matrix.rotate(g_rightHandAngle, 0, 0, 1);
@@ -382,7 +380,7 @@ rightHand.render();
 
 // --- Left Leg ---
 var leftLeg = new Cube();
-leftLeg.color = [0.6, 0.6, 0.6, 1]; // Same gray
+leftLeg.color = COLORS.DARK_GRAY;
 
 leftLeg.matrix.set(body.matrix);
 leftLeg.matrix.scale(1/0.5, 1/0.7, 1/0.3); // Undo body's scale
@@ -395,7 +393,7 @@ leftLeg.render();
 
 // --- Right Leg ---
 var rightLeg = new Cube();
-rightLeg.color = [0.6, 0.6, 0.6, 1]; // Same gray
+rightLeg.color = COLORS.DARK_GRAY;
 rightLeg.matrix.set(body.matrix);
 rightLeg.matrix.scale(1/0.5, 1/0.7, 1/0.3);
 rightLeg.matrix.translate(0.27, -0.4, 0.05);
