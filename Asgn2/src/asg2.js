@@ -177,46 +177,6 @@ function tick() {
 
   requestAnimationFrame(tick);
 }
-// function updateAnimationAngles() {
-//   if (g_pokeAnimation) {
-//     g_headAngle = 45 * Math.sin(g_seconds * 5);
-//     g_leftArmAngle = -45 * Math.abs(Math.sin(g_seconds * 10));
-//     g_rightArmAngle = -45 * Math.abs(Math.sin(g_seconds * 10));
-//     g_leftLegAngle = 30 * Math.sin(g_seconds * 5);
-//     g_rightLegAngle = -30 * Math.sin(g_seconds * 5);
-//   }
-
-//   if (g_shiftClickAnimation) {
-//     let elapsed = g_seconds - g_shiftClickStartTime;
-
-//     const totalDuration = 2.0;
-//     const half = totalDuration / 2;
-
-//     if (elapsed <= totalDuration) {
-//       const t = elapsed / totalDuration;
-
-//       // Head turn (happens throughout)
-//       g_headAngle = 30 * easeOutQuad(t);
-
-//       if (elapsed <= half) {
-//         // First half: raise the arm only
-//         const armProgress = easeOutQuad(elapsed / half);
-//         g_rightArmAngle = 150 * armProgress;
-//         g_rightHandAngle = 0;
-//       } else {
-//         // Second half: keep arm up, animate hand forward and back
-//         g_rightArmAngle = 150;
-
-//         const handT = (elapsed - half) / half;
-//         const handSwing = Math.sin(handT * Math.PI * 2); // full cycle in second half
-//         g_rightHandAngle = 30 * handSwing; // swings from -30 to 30 degrees
-//       }
-//     } else {
-//       // Animation done
-//       g_shiftClickAnimation = false;
-//     }
-//   }
-// }
 function updateAnimationAngles() {
   if (g_pokeAnimation) {
     g_headAngle = 45 * Math.sin(g_seconds * 5);
