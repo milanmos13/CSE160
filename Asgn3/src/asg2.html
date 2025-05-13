@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>3D Character Animation</title>
+    <link rel="stylesheet" href="asg1.css">
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+      }
+      .container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+      }
+      .canvas-container {
+        flex: 1;
+        min-width: 400px;
+      }
+      .controls {
+        flex: 1;
+        min-width: 300px;
+        background: #f5f5f5;
+        padding: 15px;
+        border-radius: 8px;
+      }
+      .control-group {
+        margin-bottom: 15px;
+        padding: 10px;
+        background: white;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      }
+      .control-group h3 {
+        margin-top: 0;
+        color: #333;
+      }
+      .slider-container {
+        margin: 10px 0;
+      }
+      button {
+        background: #4CAF50;
+        color: white;
+        border: none;
+        padding: 8px 15px;
+        border-radius: 4px;
+        cursor: pointer;
+        margin: 5px 0;
+      }
+      button:hover {
+        background: #45a049;
+      }
+      #fpsCounter {
+        font-weight: bold;
+        color: #666;
+      }
+      .stats {
+        font-size: 14px;
+        color: #666;
+      }
+    </style>
+  </head>
+
+  <body onload="main()">
+    <h1>3D Character Animation</h1>
+    
+    <div class="container">
+      <div class="canvas-container">
+        <canvas id="webgl" width="600" height="600">
+          Please use a browser that supports "canvas"
+        </canvas>
+        <div class="stats">
+          <div id="fpsCounter">FPS: 0</div>
+          <div>Camera Position: <span id="cameraPos">(0, 0, 3)</span></div>
+          <div id="fpsValue">0</div>
+        </div>
+      </div>
+      
+      <div class="controls">
+        <div class="control-group">
+          <h3>Animations</h3>
+          <button id="toggleWalking">Toggle Walking Animation</button>
+          <button id="resetCamera">Reset Camera</button>
+          <div class="slider-container">
+            Global Rotation: 
+            <input type="range" min="0" max="360" value="0" class="slider" id="angleSlide">
+            <span id="angleValue">0°</span>
+          </div>
+        </div>
+        
+        <div class="control-group">
+          <h3>Head Controls</h3>
+          <div class="slider-container">
+            Head Rotation: 
+            <input type="range" min="-45" max="45" value="0" class="slider" id="headSlide">
+            <span id="headValue">0°</span>
+          </div>
+        </div>
+        
+        <div class="control-group">
+          <h3>Arm Controls</h3>
+          <div class="slider-container">
+            Left Arm Rotation: 
+            <input type="range" min="-150" max="0" value="0" class="slider" id="leftArmSlide">
+            <span id="leftArmValue">0°</span>
+          </div>
+          <div class="slider-container">
+            Left Hand Rotation: 
+            <input type="range" min="-30" max="30" value="0" class="slider" id="leftHandSlide">
+            <span id="leftHandValue">0°</span>
+          </div>
+          <div class="slider-container">
+            Right Arm Rotation: 
+            <input type="range" min="0" max="150" value="0" class="slider" id="rightArmSlide">
+            <span id="rightArmValue">0°</span>
+          </div>
+          <div class="slider-container">
+            Right Hand Rotation: 
+            <input type="range" min="-30" max="30" value="0" class="slider" id="rightHandSlide">
+            <span id="rightHandValue">0°</span>
+          </div>
+        </div>
+        
+        <div class="control-group">
+          <h3>Leg Controls</h3>
+          <div class="slider-container">
+            Left Leg Rotation: 
+            <input type="range" min="-30" max="90" value="0" class="slider" id="leftLegSlide">
+            <span id="leftLegValue">0°</span>
+          </div>
+          <div class="slider-container">
+            Right Leg Rotation: 
+            <input type="range" min="-30" max="90" value="0" class="slider" id="rightLegSlide">
+            <span id="rightLegValue">0°</span>
+          </div>
+        </div>
+        
+        <div class="control-group">
+          <h3>Instructions</h3>
+          <p><strong>Mouse:</strong> Click and drag to look around</p>
+          <p><strong>WASD:</strong> Move forward/backward/left/right</p>
+          <p><strong>Q/E:</strong> Pan left/right</p>
+        </div>
+      </div>
+    </div>
+
+    <script src="../lib/webgl-utils.js"></script>
+
+    <script src="../lib/webgl-debug.js"></script>
+    <script src="../lib/cuon-utils.js"></script>
+    <!-- <script src="../lib/cuon-matrix.js"></script> -->
+    <script src="../lib/cuon-matrix-cse160.js"></script>
+    <script src="./Point.js"></script>
+    <script src="./Triangle.js"></script>
+    <script src="./Circle.js"></script>
+    <script src="./asg2.js"></script>
+    <script src="./Cube.js"></script>
+    <script src="./Camera.js"></script>
+  </body>
+</html>
