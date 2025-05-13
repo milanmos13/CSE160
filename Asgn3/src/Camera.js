@@ -35,25 +35,26 @@ class Camera {
         this.at = this.at.add(strafeVec);
       }
   
-    panLeft() {
-      this._rotateAroundUp(this.rotationAngle);
-    }
-  
-    panRight() {
-      this._rotateAroundUp(-this.rotationAngle);
-    }
-  
-    _rotateAroundUp(angle) {
-      const rotationMat = new Matrix4();
-      rotationMat.setRotate(angle * 180/Math.PI, 
-                           this.up.elements[0], 
-                           this.up.elements[1], 
-                           this.up.elements[2]);
-      
-      const viewDir = this._viewDir();
-      const rotatedViewDir = new Vector3();
-      rotationMat.multiplyVector3(viewDir, rotatedViewDir);
-      
-      this.at = new Vector3().set(this.eye).add(rotatedViewDir);
-    }
+      panLeft() {
+        this._rotateAroundUp(-this.rotationAngle);
+      }
+    
+      panRight() {
+        this._rotateAroundUp(this.rotationAngle);
+      }
+    
+      _rotateAroundUp(angle) {
+        const dir = new Vector3().set(this.at).sub(this.eye);
+        const x = dir.elements[0];
+        const z = dir.elements[2];
+        const y = dir.elements[1];
+    
+        const cosA = Math.cos(angle);
+        const sinA = Math.sin(angle);
+        const newX = x * cosA - z * sinA;
+        const newZ = x * sinA + z * cosA;
+    
+        const rotatedDir = new Vector3([newX, y, newZ]);
+        this.at = new Vector3().set(this.eye).add(rotatedDir);
+      }
   }
