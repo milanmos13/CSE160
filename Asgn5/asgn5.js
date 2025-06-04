@@ -438,24 +438,32 @@ function main() {
 		scene.add(directionalLight);
 
 		// Point light (street lamp)
-		const pointLight = new THREE.PointLight(0xFFD700, 1, 20);
+		const pointLight = new THREE.PointLight(0xFFD700, 2, 30);
 		pointLight.position.set(0, 5, -10);
 		pointLight.castShadow = true;
-		pointLight.shadow.mapSize.width = 1024;
-		pointLight.shadow.mapSize.height = 1024;
+		pointLight.shadow.mapSize.width = 2048;
+		pointLight.shadow.mapSize.height = 2048;
+		pointLight.shadow.camera.near = 0.5;
+		pointLight.shadow.camera.far = 50;
+		pointLight.shadow.bias = -0.0001;
 		scene.add(pointLight);
 
 		// Spot light (fountain light)
-		const spotLight = new THREE.SpotLight(0xFFFFFF, 1);
+		const spotLight = new THREE.SpotLight(0x4169E1, 3);
 		spotLight.position.set(0, 10, 0);
-		spotLight.angle = Math.PI / 6;
-		spotLight.penumbra = 0.1;
-		spotLight.decay = 2;
-		spotLight.distance = 50;
+		spotLight.angle = Math.PI / 4;
+		spotLight.penumbra = 0.2;
+		spotLight.decay = 1.5;
+		spotLight.distance = 30;
 		spotLight.castShadow = true;
-		spotLight.shadow.mapSize.width = 1024;
-		spotLight.shadow.mapSize.height = 1024;
+		spotLight.shadow.mapSize.width = 2048;
+		spotLight.shadow.mapSize.height = 2048;
+		spotLight.shadow.camera.near = 0.5;
+		spotLight.shadow.camera.far = 50;
+		spotLight.shadow.bias = -0.0001;
+		spotLight.target.position.set(0, 0, -2);
 		scene.add(spotLight);
+		scene.add(spotLight.target);
 
 		// Setup GUI for light controls
 		const lightFolder = gui.addFolder('Light Controls');
