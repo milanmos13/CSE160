@@ -1,0 +1,38 @@
+# Blender 4.4.3 MTL File: 'tiny-bird.blend'
+# www.blender.org
+
+newmtl Bird
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd Little Bird_Bird_BaseColor.1001.png
+map_Ns Little Bird_Bird_Roughness.1001.png
+map_refl Little Bird_Bird_Metallic.1001.png
+map_Ke Little Bird_Bird_Emissive.1001.png
+map_Bump -bm 1.000000 Little Bird_Bird_Normal.1001.png
+
+newmtl Eye
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd Little Bird_Eye_BaseColor.1001.png
+map_Ns Little Bird_Eye_Roughness.1001.png
+map_refl Little Bird_Eye_Metallic.1001.png
+map_Ke Little Bird_Eye_Emissive.1001.png
+map_Bump -bm 1.000000 Little Bird_Eye_Normal.1001.png
+
+newmtl Tie
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd Little Bird_Tie_BaseColor.1001.png
+map_Ns Little Bird_Tie_Roughness.1001.png
+map_refl Little Bird_Tie_Metallic.1001.png
+map_Ke Little Bird_Tie_Emissive.1001.png
+map_Bump -bm 1.000000 Little Bird_Tie_Normal.1001.png
